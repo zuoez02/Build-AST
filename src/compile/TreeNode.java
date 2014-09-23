@@ -10,6 +10,7 @@ public class TreeNode {
 	private int number;
 	private String type;
 	private List<TreeNode> children;
+
 	public int getNumber() {
 		return number;
 	}
@@ -46,22 +47,24 @@ public class TreeNode {
 	public String toString() {
 		String s = new String();
 		s = "number:" + this.number + " type:" + this.type;
-		if(!this.field.isEmpty()) {
+		if (!this.field.isEmpty()) {
 			s += "\tField: ";
-			for(int i=0;i<this.field.size();i++)
-				s += this.field.get(i).getName() + ": " + this.field.get(i).getValue() + "\t";
+			for (int i = 0; i < this.field.size(); i++)
+				s += this.field.get(i).getName() + ": "
+						+ this.field.get(i).getValue() + "\t";
 		}
 		return s;
 	}
 
 	public void printAll(int num) throws IOException {
-		for(int i = 0;i<num;i++)
-			printFile("TreeNode.analysis", "  ");		
+		for (int i = 0; i < num; i++)
+			printFile("TreeNode.analysis", "  ");
 		printFile("TreeNode.analysis", this.toString() + "\n");
-		for(int i = 0; i <this.children.size();i++) {
-			this.children.get(i).printAll(num+1);
+		for (int i = 0; i < this.children.size(); i++) {
+			this.children.get(i).printAll(num + 1);
 		}
 	}
+
 	public List<TreeNode> getChildren() {
 		return children;
 	}
@@ -72,7 +75,7 @@ public class TreeNode {
 
 	public void printFile(String name, String s) throws IOException {
 		File file = new File(name);
-		if(!file.exists())
+		if (!file.exists())
 			file.createNewFile();
 		try {
 			FileWriter fw = new FileWriter(file, true);
